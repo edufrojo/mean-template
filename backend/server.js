@@ -40,6 +40,21 @@ router.route('/issues/:id').get((req, res) => {
   });
 });
 
+/*
+ * Añadir nuevas tareas
+ */
+router.route('/issues/add').post((req, res) => {
+  let issue = new Issue(req.body);
+  issue
+    .save()
+    .then(issue => {
+      res.status(200).json({ issue: 'Added successfully' });
+    })
+    .catch(err => {
+      res.status(400).send('Failed to create new record');
+    });
+});
+
 app.use('/', router);
 
 app.listen(PORT, () => console.log(`[INFO] Express disponible en 'http://localhost:` + PORT + `'`));
