@@ -20,6 +20,13 @@ connection.once('open', () => {
   console.log('[INFO] MongoDB conectado');
 });
 
+router.route('/issues').get((req, res) => {
+  Issue.find((err, issues) => {
+    if (err) console.log(err);
+    else res.json(issues);
+  });
+});
+
 app.use('/', router);
 
 app.listen(PORT, () => console.log(`[INFO] Express disponible en 'http://localhost:` + PORT + `'`));
