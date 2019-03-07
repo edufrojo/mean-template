@@ -1,9 +1,9 @@
-const Issue = require('./models/Issue');
-
 const express = require('express');
 const cors = require('cors');
 const bodyParser = require('body-parser');
 const mongoose = require('mongoose');
+
+const Issue = require('./models/Issue');
 
 const app = express();
 const PORT = 4000;
@@ -12,7 +12,7 @@ const router = express.Router();
 app.use(cors());
 app.use(bodyParser.json());
 
-mongoose.connect('mongodb://localhost:9006/issues', { useNewUrlParser: true });
+mongoose.connect('mongodb://localhost:9006/principal', { useNewUrlParser: true });
 
 const connection = mongoose.connection;
 
@@ -77,6 +77,16 @@ router.route('/issues/update/:id').post((req, res) => {
           res.status(400).send('Update failed');
         });
     }
+  });
+});
+
+/*
+ * Borrar una tarea
+ */
+router.route('/issues/delete/:id').get((req, res) => {
+  Issue.findByIdAndRemove({ _id: req.params.id }, (err, issue) => {
+    if (err) res.json(err);
+    else res.json('Removed successfully');
   });
 });
 
