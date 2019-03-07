@@ -16,4 +16,14 @@ export class IssueService {
   getIssueById(id) {
     return this.http.get(`${this.uri}/issues/${id}`);
   }
+
+  addIssue(title, responsible, description, severity) {
+    const issue = {
+      title: title,
+      responsible: responsible,
+      description: description,
+      severity: severity,
+    };
+    return this.http.post(`${this.uri}/issues/add`, issue);
+  }
 }
