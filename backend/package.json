@@ -1,14 +1,16 @@
 {
   "name": "mean-template-backend",
   "version": "1.0.0",
-  "description": "",
+  "description": "mean-template-backend",
   "main": "server.js",
   "scripts": {
     "start": "nodemon server.js"
   },
-  "keywords": [],
-  "author": "",
-  "license": "ISC",
+  "keywords": [
+    "nodejs"
+  ],
+  "author": "edufrojo",
+  "license": "MIT",
   "devDependencies": {
     "nodemon": "^1.18.9"
   },
