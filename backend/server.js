@@ -55,6 +55,31 @@ router.route('/issues/add').post((req, res) => {
     });
 });
 
+/*
+ * Actualizar una tarea
+ */
+router.route('/issues/update/:id').post((req, res) => {
+  Issue.findById(req.params.id, (err, issue) => {
+    if (!issue) return next(new Error('Could not load Document'));
+    else {
+      issue.title = req.body.title;
+      issue.responsible = req.body.responsible;
+      issue.description = req.body.description;
+      issue.severity = req.body.severity;
+      issue.status = req.body.status;
+
+      issue
+        .save()
+        .then(issue => {
+          res.json('Update done');
+        })
+        .catch(err => {
+          res.status(400).send('Update failed');
+        });
+    }
+  });
+});
+
 app.use('/', router);
 
 app.listen(PORT, () => console.log(`[INFO] Express disponible en 'http://localhost:` + PORT + `'`));
