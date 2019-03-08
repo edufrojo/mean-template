@@ -1,6 +1,6 @@
 # mean-template
 
-MEAN Template (MongoDB, Express, Angular y NodeJS)
+MEAN CRUD Template (MongoDB, Express, Angular & NodeJS)
 
 [![Build Status](https://travis-ci.org/edufrojo/mean-template.svg?branch=master)](https://travis-ci.org/edufrojo/mean-template)
 [![dependencies Status](https://david-dm.org/edufrojo/mean-template/status.svg)](https://david-dm.org/edufrojo/mean-template)
